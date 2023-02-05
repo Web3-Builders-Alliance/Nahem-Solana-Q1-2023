@@ -112,7 +112,6 @@ let (tag, rest) = input.split_first().ok_or(InvalidInstruction)?;
     }
 
 }
-`
 
 # processor.rs
 
@@ -145,8 +144,6 @@ let instruction = EscrowInstruction::unpack(instruction_data)?;
             }
         }
     }
-
-`
 
 Once the two instructions are mapped to their respective functions, we need to define them.
 
@@ -227,4 +224,4 @@ let initializer = next_account_info(account_info_iter)?;
         )?;
 
         Ok(())
-    }`
+    }
