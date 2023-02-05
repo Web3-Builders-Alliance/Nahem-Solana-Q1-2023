@@ -111,7 +111,8 @@ let (tag, rest) = input.split_first().ok_or(InvalidInstruction)?;
         Ok(amount)
     }
 
-}`
+}
+`
 
 # processor.rs
 
@@ -123,7 +124,8 @@ First, we unpack the instruction data to get the type of `instruction`. Then we 
 
 The `process` function returns a ProgramResult which we previously brought into scope with the keyword `use`
 
-`pub struct Processor;
+`
+pub struct Processor;
 impl Processor {
 pub fn process(
 program_id: &Pubkey,
@@ -142,7 +144,9 @@ let instruction = EscrowInstruction::unpack(instruction_data)?;
                 Self::process_exchange(accounts, amount, program_id)
             }
         }
-    }`
+    }
+
+`
 
 Once the two instructions are mapped to their respective functions, we need to define them.
 
@@ -158,11 +162,11 @@ To get the state of the program we need to load `escrow_info` and then unpack it
 
 Also we need to make sure that the escrow is not `initialized` as we can only `initialize` it once, otherwise we return a `AccountAlreadyInitialized` error.
 
-Now we want to change escrow_info to include the values after initialization which will be packed into state later.
+Now we want to change `escrow_info` to include the values after initialization which will be packed into state later.
 
-TODO: continue where I left it... owner_change_ix
+`TODO:` continue where I left it... `owner_change_ix`
 
-1 fn process_init_escrow(
+`fn process_init_escrow(
 accounts: &[AccountInfo],
 amount: u64,
 program_id: &Pubkey,
